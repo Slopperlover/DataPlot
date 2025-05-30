@@ -7,9 +7,9 @@ from enum import Enum
 
 class Layout(Enum):
     LINE_STYLE = ('-', '--', ':', '-.')
-    LEGEND_LOCATION = ('upper left', 'center left', 'upper right', 'center right')
-    COLOR = ('red', 'green', 'blue', 'purple')
-    Y_AS_POSITION = (('outward', 60), ('outward', 120))
+    LEGEND_LOCATION = ('upper left', 'upper right', 'center left', 'center right', 'lower left', 'lower right')
+    COLOR = ('red', 'green', 'blue', 'purple', 'black', 'orange')
+    Y_AS_POSITION = (('outward', 60), ('outward', 120), ('outward', 180), ('outward', 240))
 
 class Plot:
     def __init__(self, file_path: str, data: list, own_axes: dict = {}, 
@@ -35,12 +35,11 @@ class Plot:
         self.yas_naam = yas_naam
         self.value_ax = []
 
-        self.y_as = [0, 0, 0, 0] # Uitvinden waarom het niet werkt zonder dit
+        self.y_as = [] # Uitvinden waarom het niet werkt zonder dit
 
         # kijk naar hoogste waarde in own_axes
         self.higest_value_ax = self.own_axes[max(self.own_axes, key = self.own_axes.get)] 
         
-
         # Invoer nacheck
         if self.aantal_lijnen != len(self.data):            
             raise Exception("Ongeldig data invoer of aantal")
@@ -70,7 +69,7 @@ class Plot:
         
         # Ken toe de y-assen 
         for counter in range(self.aantal_lijnen):
-            self.y_as[counter] = sorce[self.data[counter]]
+            self.y_as += [sorce[self.data[counter]]]
 
         
     def make_figure(self):
@@ -101,6 +100,31 @@ class Plot:
                 # Voeg een nieuwe y-as (werkt niet met live plotten)
                 self.value_ax[counter].spines['right'].set_position(Layout.Y_AS_POSITION.value[counter - 2])  # min 2 sinds eerste 2 niet toegekend worden
     
+
+    def format_adjustment(self):
+        """
+        Pas de figuur fromaat aan
+        """
+        match len(self.value_ax):
+            case 1:
+                plt.subplots_adjust(left=0.055, right=0.97, 
+                    top=0.95, bottom=0.08)
+            case 2:
+                plt.subplots_adjust(left=0.055, right=0.94, 
+                    top=0.95, bottom=0.08)
+            case 3:
+                plt.subplots_adjust(left=0.055, right=0.89, 
+                    top=0.95, bottom=0.08)
+            case 4:
+                plt.subplots_adjust(left=0.055, right=0.84, 
+                    top=0.95, bottom=0.08)
+            case 5:
+                plt.subplots_adjust(left=0.055, right=0.78, 
+                    top=0.95, bottom=0.08)
+            case 6:
+                plt.subplots_adjust(left=0.055, right=0.73, 
+                    top=0.95, bottom=0.08)
+
     def legend(self):
         """
         Maak legenda
@@ -120,7 +144,6 @@ class Plot:
         """
         Plotten van data 
         """
-
         # Counter om te zorgen dat lijnen met zelfde value_as ander stijl krijgen 
         style_counter = []
 
@@ -153,7 +176,7 @@ class Plot:
         self.assigning_lines()
         self.plot()
 
-        plt.tight_layout()
+        self.format_adjustment()
         plt.show()
 
     def show_live(self, intervlas: int= 500):
@@ -175,8 +198,8 @@ if __name__ == "__main__":
 
     datanaam = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    value = ['Hi', 'HELLO', 'HOW', 'YOU']
+    value = ['Hi', 'HELLO', 'HOW', 'Are', 'You', 'Not']
 
-    Graf = Plot('C:\\school\\python\\eindopdracht\\live.csv', ['1', '2', '3'], {1: 1, 2: 2, 3: 2}, '0', datanaam, value)
+    Graf = Plot('C:\\school\\python\\eindopdracht\\py.csv', ['4'], {1: 1}, '0', datanaam, value)
 
-    Graf.show_live()
+    Graf.show()
