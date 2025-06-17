@@ -15,6 +15,6 @@ if __name__ == "__main__":
     #            Addres van document,                  colum nummers,    , y-axes,         x-as,  data fromat    
     #wow = Plot('D:\\git\\DataPlot\\7_VESC_20_02.csv', ['4', '5', '6'], {1: 1, 2: 2, 3: 3}, '1', datanaam)
 
-    wow = Plot('D:\\git\\DataPlot\\Friesland\\2_MPPT_0_05_07.csv', ['4', '5', '0', '7'], {1: 1, 2: 2, 3: 3, 4: 4}, '3', mppt)
+    wow = Plot('C:\\school\\python\\eindopdracht\\Friesland\\7_VESC_20_02.csv', ['6', '8', '9'], {1: 1, 2: 2, 3: 3}, '1', vesc)
 
     wow.show()
