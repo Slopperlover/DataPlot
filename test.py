@@ -1,9 +1,15 @@
-d = {'Name': 'Ram', 'Age': '19', 'Country': 'India'}
-print(list(d.items())[1][0])
-c =1
-f ={}
-for a in d:
-    f[c] = d[a]
-    c += 1
+import matplotlib.pyplot as plt
 
-print(f)
+def on_key(event):
+    if event.key == 'q':  # Close the window when 'q' is pressed
+        plt.close(event.canvas.figure)
+
+# Create a plot
+fig, ax = plt.subplots()
+ax.plot([1, 2, 3], [4, 5, 6])
+
+# Connect the key press event to the on_key function
+fig.canvas.mpl_connect('key_press_event', on_key)
+
+# Display the plot
+plt.show()
