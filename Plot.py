@@ -230,6 +230,6 @@ if __name__ == "__main__":
 
     value = ['Hi', 'HELLO', 'HOW', 'Are', 'You', 'Not']
 
-    Graf = Plot('D:\\git\\DataPlot\\7_VESC_20_02.csv', ['3', '4', '5'], {1: 1, 2: 2, 3: 3}, '1', datanaam, value)
+    Graf = Plot('C:\\school\\python\\git\\DataPlot\\7_VESC_20_02.csv', ['3', '4', '5'], {1: 1, 2: 2, 3: 3}, '1', datanaam, value)
 
     Graf.show()

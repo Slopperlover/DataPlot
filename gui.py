@@ -1,4 +1,5 @@
 import argparse
+import readchar
 
 def parse_argument():
     """
@@ -13,6 +14,11 @@ def parse_argument():
     
     return parser.parse_args()
 
+class Gui:
+    """
+    """
+
+    def 
 
 if __name__ == "__main__":
     args = parse_argument()

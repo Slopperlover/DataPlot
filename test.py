@@ -1,24 +1,9 @@
-import threading
-import time
+d = {'Name': 'Ram', 'Age': '19', 'Country': 'India'}
+print(list(d.items())[1][0])
+c =1
+f ={}
+for a in d:
+    f[c] = d[a]
+    c += 1
 
-def loop():
-        while True:
-            print("loop")
-            time.sleep(1)
-
-def stop():
-    while True:
-         key = input("enter the key")
-         if key == "q":
-              exit()
-
-if __name__ =="__main__":
-    t1 = threading.Thread(target=loop)
-    t2 = threading.Thread(target=stop)
-
-    t1.start()
-    while True:
-         key = input("enter the key")
-         if key == "q":
-              t1.join()
-              exit()
+print(f)
