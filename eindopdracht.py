@@ -37,8 +37,8 @@ if __name__ == "__main__":
                 else:
                         print("incorect input")
             case 's' | 'S': # Show the plot
-                wow = Plot('D:\\git\\DataPlot\\live.csv', command.data, command.own_axes, command.x_collum, datanaam)
-                wow.show()
+                graph = Plot('7_VESC_20_02.csv', command.data, command.own_axes, command.x_collum, datanaam)
+                graph.show()
             case 'h' | 'H': # Print all comands
                 command.help()
             case 'q' | 'Q': # Exit the program

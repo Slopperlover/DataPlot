@@ -83,7 +83,7 @@ class Plot:
 
     def make_figure(self):
         """
-        Maak de figuur met alle bijbehoorende value axes
+        Create the figure with all associated value axes
         """
         # Maak subplot object
         figuur, ax = plt.subplots()
@@ -100,7 +100,7 @@ class Plot:
 
     def assigning_figure_axes(self):
         """
-        Geef aan elke figure_ax correcte opmaak
+        Give each figure_ax correct formatting
         """
         for counter in range(self.higest_figure_ax):
             self.figure_ax[counter].set_ylabel(self.yas_naam[counter], 
@@ -129,7 +129,7 @@ class Plot:
 
     def format_adjustment(self):
         """
-        Pas de figuur fromaat aan (werkt niet helemaal met live plotten)
+        Adjust the figure size (doesn't fully work with live plotting)
         """
         match len(self.figure_ax):
             case 1:
